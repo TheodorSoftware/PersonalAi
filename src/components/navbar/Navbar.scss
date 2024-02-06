@@ -1,0 +1,47 @@
+@import '../../scss/main.scss';
+
+.navbar{
+
+    @include flexDisplay(row, center, space-around);
+    border: 1px solid grey;
+    box-shadow: 2px 13px 19px -1px rgba(0,0,0,0.1);
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    border-radius: 20px;
+    height: 10%;
+
+    &__logo{
+
+    }
+
+    &__content{
+
+        width: 30%;
+        height: 100%;
+
+        &__list{
+
+            height: 100%;
+            @include flexDisplay(row, center, space-around);
+
+            &__item{
+                @include fontSettings('Montserrat', 14, bold, normal);
+                width: 125px;
+                height: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                border-radius: 15px;
+                background-color: $color-details;
+                color: black;
+
+
+                &:hover{
+                    background-color: $color-hover;
+                }
+            }
+        }
+    }
+}

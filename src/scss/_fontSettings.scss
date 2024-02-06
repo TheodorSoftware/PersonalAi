@@ -1,0 +1,6 @@
+@mixin fontSettings($font-familly, $font-size, $font-weigth, $font-style){
+    font-family: $font-familly;
+    font-size: $font-size;
+    font-weight: $font-weigth;
+    font-style: $font-style;
+}

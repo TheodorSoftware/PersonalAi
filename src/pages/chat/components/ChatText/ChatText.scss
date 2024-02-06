@@ -1,0 +1,14 @@
+.chatText{
+
+    width: 80%;
+
+    &__inputClient{
+        font-family: 'Montserrat';
+        display: flex;
+        justify-content: end;
+    }
+
+    &__gptResponse{
+
+    }
+}

@@ -1,0 +1,44 @@
+.chatPage{
+
+    height: 85%;
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+
+    padding: 50px;
+    &__textInputGroup{
+
+        width: 50%;
+
+        &__input{
+            position: absolute;
+            width: 60%;
+            height: 60px;
+            border-radius: 20px;
+            border: 1px solid grey;
+            text-indent: 10px;
+
+            &::placeholder{
+                
+            }
+        }
+
+        &__button{
+            position: relative;
+            left: 119%;
+            top: 15%;
+            height: 50px;
+            width: 50px;
+            border-radius: 20px;
+            border: 1px solid grey;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:hover{   
+                background-color: rgb(202, 202, 202);
+            }
+        }
+    }
+}

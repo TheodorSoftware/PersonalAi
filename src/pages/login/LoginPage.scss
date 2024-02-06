@@ -1,0 +1,62 @@
+@import '../../scss/main.scss';
+
+.loginPage{
+
+    height: 50%;
+    @include flexDisplay(column, center, center);
+    @include fontSettings('Montserrat', 14, 500, normal);
+    position: absolute;
+    left: 25%;
+    top: 20%;  
+    width: 50%;
+    
+    &__container{
+
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+              0 10px 10px rgba(0,0,0,0.22);
+        padding: 40px;
+
+        &__form{
+            @include flexDisplay(column, center, center);
+        
+            input{
+                margin: 20px 0 20px 0;
+                width: 50%;
+                height: 40px;
+                border-radius: 10px;
+                border: 1px solid black;
+                text-indent: 10px;
+                @include fontSettings('Montserrat', 14, 500, normal);
+                
+                &::placeholder{
+                    text-indent: 10px;
+                }
+            }
+    
+            a{
+                margin: 20px 0 20px 0;
+            }
+    
+            button{
+                width: 25%;
+                height: 40px;
+                background-color: $primary-color-gradient;
+                @include fontSettings('Montserrat', 14, 500, normal);   
+                color: white;
+                border: none;
+                border-radius: 20px;
+            }
+
+            &__registerLink{
+                margin: 20px 0 20px 0;
+            }
+
+            &__error-message{
+                color: $error-color;
+            }
+        }
+    }
+
+}
