@@ -2,7 +2,7 @@ import { ActionReducerMapBuilder, PayloadAction, Slice, createSlice } from "@red
 import { UserCredentials } from "../../interfaces/UserCredentials.interface";
 import { Status } from "../../contants/enums/Status.enum";
 import LoginSlice from "./loginSlice.interface";
-import loginResponseMiddleware from './loginMiddlware';
+import { loginResponseMiddleware, recoverPasswordMiddleware } from './loginMiddlware';
 
 const initialState: LoginSlice = {
     userCredetials: {
@@ -13,6 +13,14 @@ const initialState: LoginSlice = {
         tokenValue: undefined,
         status: Status.PENDING,
         error: ''
+    },
+    recoverPassword:{
+        values: {
+            email: '',
+            code: '',
+        },
+        status: Status.PENDING,
+        error: ""
     }
 };
 
@@ -26,6 +34,18 @@ export const loginSlice: Slice = createSlice({
                 userCredetials: {
                     email: action.payload.email,
                     password: action.payload.password
+                }
+            }
+        },
+        setEmailForRecoverPassword(state, action: PayloadAction<string>){
+            return {
+                ...state,
+                recoverPassword:{
+                    ...state.recoverPassword,
+                    values: {
+                        email: action.payload,
+                        code: ''
+                    },
                 }
             }
         }
@@ -58,6 +78,36 @@ export const loginSlice: Slice = createSlice({
                     error: ''
                 }
             }
+        });
+        builder.addCase( recoverPasswordMiddleware.pending , (state) => {
+            return {
+                ...state,
+                recoverPassword: {
+                    ...state.recoverPassword,
+                    status: Status.PENDING,
+                }
+            }
+        }).addCase(recoverPasswordMiddleware.rejected , (state, action) => {
+            return {
+                ...state,
+                recoverPassword:{
+                    ...state.recoverPassword,
+                    status: Status.FAILED,
+                    error: action.error.message as string
+                }
+            }
+        }).addCase(recoverPasswordMiddleware.fulfilled, (state,action) => {
+            return {
+                ...state,
+                recoverPassword:{
+                    values: {
+                        ...state.recoverPassword.values,
+                        code: action.payload
+                    },
+                    status: Status.SUCCESS,
+                    error: ''
+                }
+            }
         })
     },
 
@@ -65,5 +115,7 @@ export const loginSlice: Slice = createSlice({
 
 export default loginSlice.reducer;  
 export const { setUserCredetialsInput } = loginSlice.actions;
+export const { setEmailForRecoverPassword } = loginSlice.actions;
 
 export const selectUserAuth = (state: any) => state.loginSlice.userAuth
+export const selectForgotPasswordStatus = ( state : any ) => state.loginSlice.recoverPassword.status

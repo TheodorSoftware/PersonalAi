@@ -59,4 +59,39 @@
         }
     }
 
+    &__recover{
+
+        &-button{
+            @include fontSettings('Montserrat', 14, 500, normal);
+            @include borderSetting(25px,none,transparent, 1px);
+            margin: 20px;
+            height: 35px;
+            background-color: $primary-color-gradient;
+            color: white;
+            width: 50%;
+            align-self: center;
+
+            &:hover{
+                background-color: $secondary-color-gradient;
+                transition: 1s;
+            }
+        }
+
+        &-input{
+            @include fontSettings('Montserrat', 14, 500, normal);
+            @include borderSetting(10px,solid,black, 1px);
+            margin: 20px;
+            width: 300px;
+            height: 40px;
+            text-indent: 8px;
+        }
+
+        &-error{
+            @include fontSettings('Montserrat', 14, 500, normal);
+            color: $error-color;
+            align-self: center;
+            margin: 0;
+        }
+    }
+
 }

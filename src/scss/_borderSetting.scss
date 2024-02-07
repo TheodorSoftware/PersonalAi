@@ -1,3 +1,6 @@
-@mixin borderSetting(){
-    
+@mixin borderSetting($border-radius, $border-style, $border-color, $border-width){
+    border-radius: $border-radius;
+    border-style: $border-style;
+    border-color: $border-color;
+    border-width: $border-width;
 }

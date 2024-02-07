@@ -9,7 +9,7 @@ const ProtectedRoute = ( props: ProtectedRouteProps) => {
 
 
     if (!props.token) {
-      return <Navigate to="/landing" />;
+      return <Navigate to="/login" />;
     }
     return props.children;
 };
